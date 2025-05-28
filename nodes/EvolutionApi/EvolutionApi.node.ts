@@ -31,8 +31,6 @@ export class EvolutionApi implements INodeType {
 			},
 		],
 		requestDefaults: {
-			baseURL: 'https://doc.evolution-api.com/api-reference',
-			url: '',
 			headers: {
 				Accept: 'application/json',
 				'Content-Type': 'application/json',

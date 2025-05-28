@@ -32,19 +32,27 @@ export async function sendText(ef: IExecuteFunctions) {
 				};
 			};
 
+			// Corpo básico da mensagem para Evolution API v1.8.2
 			const body: any = {
 				number: remoteJid,
-				text: messageText,
+				textMessage: {
+					text: messageText,
+				},
 			};
 
+			// Aplicar delay se especificado
 			if (options.delay) {
 				body.delay = options.delay;
 			}
 
+			// Preview de link para v1.8.2
 			if (options.linkPreview !== undefined) {
-				body.linkPreview = options.linkPreview;
+				if (body.textMessage) {
+					body.textMessage.linkPreview = options.linkPreview;
+				}
 			}
 
+			// Mensagem quotada para v1.8.2
 			if (options.quoted?.messageQuoted?.messageId) {
 				body.quoted = {
 					key: {
@@ -53,6 +61,7 @@ export async function sendText(ef: IExecuteFunctions) {
 				};
 			}
 
+			// Menções para v1.8.2
 			if (options.mentions?.mentionsSettings) {
 				const { mentionsEveryOne, mentioned } = options.mentions.mentionsSettings;
 

@@ -17,9 +17,12 @@ export async function createInstanceBasic(ef: IExecuteFunctions) {
 			integration: 'WHATSAPP-BAILEYS',
 		};
 
+		// Para Evolution API v1.8.2, o token é opcional
 		if (token) {
 			body.token = token;
 		}
+		
+		// Para Evolution API v1.8.2, o number pode ser definido após a criação
 		if (number) {
 			body.number = number;
 		}

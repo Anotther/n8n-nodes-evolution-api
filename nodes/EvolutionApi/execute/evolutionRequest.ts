@@ -5,13 +5,18 @@ export async function evolutionRequest(ef: IExecuteFunctions, options: IRequestO
 	const serverUrl = credentials['server-url'];
 	const apiKey = credentials.apikey;
 
+	// Remove trailing slash from serverUrl if exists
+	const baseUrl = serverUrl.toString().replace(/\/$/, '');
+
 	const requestOptions: IRequestOptions = {
 		...options,
 		headers: {
-			apikey: apiKey,
+			'apikey': apiKey,
+			'Content-Type': 'application/json',
+			'Accept': 'application/json',
 			...(options.headers || {}),
 		},
-		uri: `${serverUrl}${options.uri}`,
+		uri: `${baseUrl}${options.uri}`,
 	};
 
 	return await ef.helpers.request(requestOptions);

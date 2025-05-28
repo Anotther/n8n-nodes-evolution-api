@@ -42,10 +42,11 @@ export class EvolutionApi implements ICredentialType {
 	test: ICredentialTestRequest = {
 		request: {
 			baseURL: '={{$credentials["server-url"]}}',
-			url: '={{$credentials["server-url"].endsWith("/") ? "/erro" : "/instance/fetchInstances"}}',
+			url: '/instance/fetchInstances',
 			method: 'GET',
 			headers: {
 				apikey: '={{$credentials.apikey}}',
+				'Content-Type': 'application/json',
 			},
 		},
 	};
