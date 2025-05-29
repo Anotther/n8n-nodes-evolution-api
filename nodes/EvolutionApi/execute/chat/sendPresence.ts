@@ -7,11 +7,12 @@ import {
 import { evolutionRequest } from '../evolutionRequest';
 
 export async function sendPresence(ef: IExecuteFunctions) {
-    try {
-        const instanceName = ef.getNodeParameter('instanceName', 0) as string;
+    try {        const instanceName = ef.getNodeParameter('instanceName', 0) as string;
         const remoteJid = ef.getNodeParameter('remoteJid', 0) as string;
         const presence = ef.getNodeParameter('presence', 0) as string;
-        const delay = ef.getNodeParameter('delay', 0) as number;        const body = {
+        const delay = ef.getNodeParameter('delay', 0) as number;
+
+        const body = {
             number: remoteJid,
             options: {
                 presence,
