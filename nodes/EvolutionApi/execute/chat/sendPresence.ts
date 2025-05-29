@@ -11,12 +11,12 @@ export async function sendPresence(ef: IExecuteFunctions) {
         const instanceName = ef.getNodeParameter('instanceName', 0) as string;
         const remoteJid = ef.getNodeParameter('remoteJid', 0) as string;
         const presence = ef.getNodeParameter('presence', 0) as string;
-        const delay = ef.getNodeParameter('delay', 0) as number;
-
-        const body = {
+        const delay = ef.getNodeParameter('delay', 0) as number;        const body = {
             number: remoteJid,
-            presence,
-            delay,
+            options: {
+                presence,
+                delay,
+            },
         };
 
         const requestOptions: IRequestOptions = {
